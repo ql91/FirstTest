@@ -1,6 +1,6 @@
-# jquery的extend和fn.extend
+# (jQuery自定义插件) jquery的extend和fn.extend
 
-jQuery为开发插件提拱了两个方法，分别是：<br>
+jQuery为<mark>开发插件</mark>提拱了两个方法，分别是：<br>
  
 jQuery.fn.extend(object);<br>
 jQuery.extend(object);<br>
