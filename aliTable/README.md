@@ -1,9 +1,9 @@
 #2015阿里笔试题 表格根据表头动态排序、删除、查询 
 
 ###题目要求
-![表格排序要求图01{300*300}](https://ql91.github.io/imgby91/aliTable/表格排序.png)
+![表格排序要求图01{200*200}](https://ql91.github.io/imgby91/aliTable/表格排序.png)
 
-![表格排序要求图02](https://ql91.github.io/imgby91/aliTable/要求.png)
+![表格排序要求图02{200*100}](https://ql91.github.io/imgby91/aliTable/要求.png)
 
 ###解题思路
 (题目中描述表格的元素id为person-list奇数行的class名为odd没理解，所以按着自己的思路编写了程序。)<br>
