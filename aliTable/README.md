@@ -1,7 +1,7 @@
 #2015阿里笔试题 表格根据表头动态排序、删除、查询 
 
 ###题目要求
-![表格排序要求图01](https://ql91.github.io/imgby91/aliTable/表格排序.png)
+![表格排序要求图01](https://ql91.github.io/imgby91/aliTable/表格排序.png =300*300)
 
 ![表格排序要求图02](https://ql91.github.io/imgby91/aliTable/要求.png)
 
