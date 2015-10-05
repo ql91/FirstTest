@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>自定义jQuery插件_jQuery.fn.extend()</title>  
+  <meta name="keywords" content="jQuery自定义插件、ul,li列表中input框聚焦改变边框样式、注册"/>
+
+  <style>
+     #register{
+        height: 300px;
+        width: 320px;        
+        position: absolute;
+        left: 30px;
+        background-color: #F8FCFF;
+        padding: 20px;
+        margin: 20px;
+     }
+
+     #title{
+       width: 120px; 
+       height: 30px;
+       letter-spacing: 1px;
+       font-size: 18px;
+       margin-bottom: 5px;
+     }
+
+       ul,li{
+        list-style: none;
+        border:0px solid red;
+        margin: 0;
+        padding: 0;
+        height: 50px;
+       }
+
+       input{
+         border:1px solid #a0a0a0;
+         width: 220px;
+         height: 40px;
+         text-indent: 3px;
+         letter-spacing: 1px;
+         font-size: 14px;
+       }
+
+     /*聚焦时的边框颜色 */
+       .focus{ 
+        border:1px solid #8DD8F8;
+        box-shadow: 0 0 3px 1px #8DD8F8;/*投影方式 X轴偏移量 Y轴偏移量 阴影模糊半径 阴影扩展半径 阴影颜色; */
+       }
+  </style>
+  <script src="../js/jquery.js"></script>
+</head>
+<body>
+  <div id="register">
+    <div id="title">欢迎注册</div>
+    <ul>
+      <li><input type="text" placeholder="请输入手机号"></li>
+      <li><input type="text" placeholder="请输入6~16位密码"></li>
+    </ul>
+  </div>
+<span id="span"></span>
+  <script>
+        /*
+        功能:设置focus的聚焦的边框颜色
+        参数:无
+        示例:$.bgborderColor();
+        返回:默认"focus"
+        */
+        (function($){
+         $.fn.extend({
+          "bgborderColor":function(){
+            var li=$("input");
+            $("input").each(function(index){
+              var a=li[index];
+              $(a).bind("focus",function(){
+                $(a).addClass("focus");
+              }).bind("blur",function(){
+                $(a).removeClass("focus");
+               });
+            });
+          }
+         });
+        })(jQuery)
+
+        $(function(){
+          $("input").bgborderColor();
+        });
+  </script>
+</body>
+</html>
