@@ -1,5 +1,5 @@
 # js实现文本框内容发生改变时触发事件
-`场景一：在用户动态输入文字的时候，修改提示'您还可以输入XX字'`
+`场景一：在用户动态输入文字的时候，修改提示'您还可以输入XX字'`<br>
 `场景二：动态显示用户输入的文本框内容`
 
 oninput,onpropertychange,onchange的用法和区别
@@ -20,7 +20,7 @@ b)当前对象失去焦点(onblur)；<br>
        window.onload=function(){
        	 var input=document.getElementById("in");
        	 var out=document.getElementById("out");
-               /*input.oninput=function(){
+	 /*input.oninput=function(){
        	 	out.innerHTML=input.value;
        	 }*/
        	 input.onchange=function(){
