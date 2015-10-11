@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+
+	/* 整个页面背景图 */
+     #container{
+      	width: 1336px;
+      	height: 600px;
+      	margin: 0 auto;
+      	background: url(img/qq.png) no-repeat fixed top;
+      }
+
+	/* 登陆按钮 */
+     #btn{
+      	 height: 30px;
+      	 width:80px;
+      	 position: absolute;
+      	 right:100px;
+      	 cursor: pointer;
+      	 border-radius: 15px;
+      	 background-color: #15BBF9;
+      	 color: white;
+      	 text-align: center;
+      	 line-height: 30px
+      }
+
+	/* 登陆框 */
+      #login{
+      	position: fixed;
+      	width: 600px;
+      	height: 400px;
+      	background-color: white;
+      	margin-left: -300px;
+      	margin-top: -200px;
+      	top:50%;
+      	left: 50%;
+      	display: none;
+      	z-index:1002; 
+      }
+
+	/* 遮罩 */
+     #bg{ display: none;  position: fixed;  top: 0%;  left: 0%;  width: 100%;  height: 100%;  background-color: black;  z-index:1001;  -moz-opacity: 0.5;  opacity:.50;  filter: alpha(opacity=50);}
+
+	/* 登陆框_关闭按钮 */
+      #close{
+      	 width: 50px;
+      	 height: 25px;
+      	 margin-left: 550px;
+      	 position: absolute;
+      	 background: url(img/pp.png) no-repeat -221px -126px;
+      }
+	
+	/* 登陆框_登陆信息 */
+      #info{
+      	width: 500px;
+      	height: 200px;
+      	position: absolute;
+      	top:50px;
+      	left: 50px;
+      }
+
+	/* 登陆框_登陆信息_二维码框 */
+	  #left{
+	  	width: 200px;
+	  	height: 300px;
+	  	display: table-cell;
+	  	vertical-align: middle;
+	  	text-align: center;
+	  	border-right: 1px solid #808080;
+	  }
+	
+	/* 登陆框_登陆信息_二维码框_提示信息 */
+      #waring{
+      	display: block;
+      	margin-bottom: 25px;
+      	color: #808080;
+      }
+
+      #infolink{
+      	width: 155px;
+		height: 30px;
+		margin-left: 20px;
+		margin-top: 10px;
+		font-size: 12px;
+		color: #808080;
+		line-height: 30px;
+		background: url(img/pp.png) no-repeat 1px -473px;
+      }
+	</style>
+</head>
+<body>
+	<div id="container">
+		<div id="btn">登陆</div>
+		<!-- <button id="btn">登陆</button> -->
+	</div>
+
+	<!-- 遮罩层 -->
+	<div id="bg"></div>
+
+    <div id="login">
+    	<div id="close"></div>
+        <div id="info">
+        	<!-- 登陆框信息 -->
+        	<div id="left">
+        		<span id="waring">安全登陆,防止被盗</span>
+        		<img src="img/qr_img.png" alt="">
+				<div id="infolink">使用qq手机版扫描二维码</div>
+        	</div>
+        	<div id="right">
+        		<!-- 登陆框信息_账户密码 -->
+        	</div>
+        </div>
+    </div>
+
+	<script>
+       var btn=document.getElementById("btn");//登陆按钮
+       var login=document.getElementById("login");//登陆框
+       var close=document.getElementById("close");//登陆框关闭按钮
+       var bg=document.getElementById("bg");//遮罩层
+
+       /* 登陆框显示 */
+       btn.onclick=function(){
+       		login.style.display="block";
+       		bg.style.display="block";
+       }
+
+       /* 登陆框隐藏 */
+       close.onclick=function(){
+       	  login.style.display="none";
+       	  bg.style.display="none";
+       }
+
+ 	   var infolink=document.getElementById("infolink");
+       infolink.onmousemove=function(){
+       		infolink.style.background="url(img/pp.png) no-repeat 1px -505px";
+       }
+       infolink.onmouseout=function(){
+       		infolink.style.background="url(img/pp.png) no-repeat 1px -473px";
+       }
+
+	</script>
+</body>
+</html>
