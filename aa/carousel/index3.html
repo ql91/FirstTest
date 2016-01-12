@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+<style> 
+#wrapper{position: relative;margin: 30px auto;width: 400px;height: 200px;}
+#banner{position:relative;width: 400px;height: 200px;overflow: hidden;}
+.imgList{position:relative;width:2000px;height:200px;z-index: 10;overflow: hidden;}
+.imgList li{float:left;display: inline;}
+#prev,
+#next{position: absolute;top:80px;z-index: 20;cursor: pointer;opacity: 0.2;filter:alpha(opacity=20);}
+#prev{left: 10px;}
+#next{right: 10px;}
+#prev:hover,
+#next:hover{opacity: 0.5;filter:alpha(opacity=50);}
+.bg{position: absolute;bottom: 0;width: 400px;height: 40px;z-index:20;opacity: 0.4;filter:alpha(opacity=40)
+    ;
+    background: black;}
+.infoList{position: absolute;left: 10px;bottom: 10px;z-index: 30;}
+.infoList li{display: none;}
+.infoList .infoOn{display: inline;color: white;}
+.indexList{position: absolute;right: 10px;bottom: 5px;z-index: 30;}
+.indexList li{float: left;margin-right: 5px;padding: 2px 4px;border: 2px solid black;background: #eee;
+    cursor: pointer;}
+.indexList .indexOn{background: red;font-weight: bold;color: white;}
+</style>
+</head>
+<body>
+ <div id="wrapper"><!-- 最外层部分 -->
+    <div id="banner"><!-- 轮播部分 -->
+      <ul class="imgList"><!-- 图片部分 -->
+      <li><a href="#"><img src="./img/banner1.jpg" width="400px" height="200px" alt="puss in boots1"></a></li>
+      <li><a href="#"><img src="./img/banner2.jpg" width="400px" height="200px" alt="puss in boots2"></a></li>
+      <li><a href="#"><img src="./img/banner3.jpg" width="400px" height="200px" alt="puss in boots3"></a></li>
+      <li><a href="#"><img src="./img/banner1.jpg" width="400px" height="200px" alt="puss in boots4"></a></li>
+      <li><a href="#"><img src="./img/banner2.jpg" width="400px" height="200px" alt="puss in boots5"></a></li>
+      </ul>
+      <img src="./img/iconfont-arrowleft.png" width="20px" height="40px" id="prev">
+      <img src="./img/iconfont-arrowleft.png" width="20px" height="40px" id="next">
+      <div class="bg"></div> <!-- 图片底部背景层部分-->
+      <ul class="infoList"><!-- 图片左下角文字信息部分 -->
+        <li class="infoOn">puss in boots1</li>
+        <li>puss in boots2</li>
+        <li>puss in boots3</li>
+        <li>puss in boots4</li>
+        <li>puss in boots5</li>
+      </ul>
+      <ul class="indexList"><!-- 图片右下角序号部分 -->
+        <li class="indexOn">1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+      </ul>
+    </div>
+  </div> 
+      <script src="js/jquery.min.js"></script>
+  <script>
+
+$(document).ready(function(){
+var curIndex = 0,
+    imgLen       = $('.imgList li').length;
+console.log(imgLen);
+// 自动切换时的定时器
+var autoChange = setInterval(function(){
+    if(curIndex < imgLen-1){
+        curIndex ++;
+    }else{
+        curIndex = 0;
+    }
+
+    //图片切换处理
+    changeTo(curIndex);
+}, 2500);
+
+//左箭头滑入滑出事件处理
+$("#prev").hover(function(){ 
+    //滑入清除定时器
+    clearInterval(autoChange);
+},function(){ 
+    //滑出则重置定时器
+    autoChangeAgain();
+});
+//左箭头点击处理
+$("#prev").click(function(){ 
+    //根据curIndex进行上一个图片处理
+    curIndex = (curIndex > 0) ? (--curIndex) : (imgLen - 1);
+    changeTo(curIndex);
+});
+
+// 右键头点击
+$("#next").hover(function(){
+    //滑入清除定时器
+    clearInterval(autoChange);
+},function(){
+    //滑出重置定时器
+    autoChangeAgain();
+});
+
+$("#next").click(function(){
+    curIndex = (curIndex < imgLen - 1) ? (++curIndex) : 0;
+    changeTo(curIndex);
+})
+
+// 清除定时器时候重置定时器
+function autoChangeAgain(){
+    autoChange = setInterval(function(){
+        if(curIndex < imgLen - 1){
+            curIndex ++;
+        }else{
+            curIndex = 0;
+        }
+
+        //图片切换处理
+        changeTo(curIndex);
+    }, 2500);
+}
+
+function changeTo(num){
+    var goLeft = num*400;
+    $(".imglist").animate({letf: "-" + goLeft + "px"},500);
+    $(".infoList").find("li").removeClass("infoOn").eq(num).addClass("infoOn");
+    $(".indexList").find("li").removeClass("indexOn").eq(num).addClass('indexOn');
+}
+
+// 右下角按钮index进行事件处理
+$(".indexList").find("li").each(function(item){
+    $(this).hover(function(){
+        clearInterval(autoChange);
+        changeTo(item);
+        curIndex = item;
+    },function(){
+        autoChangeAgain();
+    })
+})
+});
+  </script>  
+</body>
+</html>
