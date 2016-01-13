@@ -2,9 +2,9 @@
 
 ---
 ##使用方式
-引入css: carouselBox.css
-引入js: jquery.js
-        carousel.js
+引入css: carouselBox.css<br/>
+引入js: jquery.js<br/>
+        carousel.js<br/>
 html代码:
 ```
 <div class="caroselBox" id="demo1" >
