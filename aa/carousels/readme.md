@@ -29,3 +29,5 @@ jQuery(document).ready(function($) {
     });
 });
 ```
+## 效果图
+![](https://github.com/ql91/small-example/tree/master/aa/carousels/Carousel.gif)
